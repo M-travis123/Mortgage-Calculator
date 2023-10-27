@@ -1,0 +1,31 @@
+#MORTGAGE CALCULATOR
+
+#Define needed variables
+payment_timeline_years = 30
+payment_timeline_months = payment_timeline_years * 12
+annual_interest_rate= 7.5 / 100 
+monthly_interest_rate = annual_interest_rate / 12
+mortgage_loan_principal = float(input('Please enter your preferred mortgage principal: GHc '))
+
+#dir(payment_timeline_years)
+
+#Calculate numerator of mortgage amount formula 
+num = monthly_interest_rate * ((1 + monthly_interest_rate) ** payment_timeline_months)
+#print(num) - verifying code
+
+#Calculate denominator of mortgage amount formula
+denum = ((1 + monthly_interest_rate) ** payment_timeline_months - 1)
+#print(denum) -verifying code  
+
+#Combine num and denum to find total monthly payment
+Total_monthly_payment = mortgage_loan_principal * (num / denum)
+#print(round(Total_monthly_payment, 3))
+
+#Calculate total amount to be paid at the end of the payment timeline
+grand_total_payable = Total_monthly_payment * payment_timeline_months
+#print(round(grand_total_payable, 3))
+
+#Output
+print(f'For a {payment_timeline_years}-year', f' mortgage loan of GHc {mortgage_loan_principal:.2f}', ' at an annual interest rate of 7.50%, \n you pay', 
+f'GHc {Total_monthly_payment:.2f} monthly.')
+print(f'Total amount to be paid will be GHc {grand_total_payable:.2f}.')
